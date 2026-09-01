@@ -1,6 +1,6 @@
 #web-course-2026 
--Shankova Uliana
--Group: 5 
+- Shankova Uliana
+- Group: 5 
 - task0 
 - task1 
 - task2 
