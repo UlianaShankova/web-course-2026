@@ -1,0 +1,283 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* colors */
+:root {
+  --color-cocoa: #4F2B1F;
+  --color-vanilla: #EFCEDB;
+  --color-bg-main: #f0f4fc;
+  --color-card-bg: #eaf1fb;
+  --color-accent-blue: #3b82f6;
+  --color-text-sub: #718096;
+}
+
+/* base */
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: var(--color-bg-main);
+  color: var(--color-cocoa);
+  line-height: 1.5;
+  padding: 30px 15px;
+  display: flex;
+  justify-content: center;
+}
+
+.page-container {
+  max-width: 960px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* navigation */
+.page-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.header-nav {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.pill-link {
+  background-color: #fff;
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 500;
+  text-decoration: none;
+  color: var(--color-cocoa);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.03);
+  transition: background-color 0.2s ease;
+}
+
+.pill-link:hover {
+  background-color: var(--color-vanilla);
+}
+
+/* cards */
+.card {
+  background-color: var(--color-card-bg);
+  border-radius: 24px;
+  padding: 30px;
+}
+
+/* main card */
+.main-card {
+  display: flex;
+  justify-content: space-between;
+  gap: 30px;
+}
+
+.card-left {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.card-right {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+/* bio */
+h1 {
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 12px;
+}
+
+.bio-meta {
+  font-size: 13px;
+  color: var(--color-text-sub);
+  margin-bottom: 8px;
+}
+
+.bio-role {
+  font-size: 14px;
+  color: var(--color-accent-blue);
+  font-weight: 500;
+}
+
+.bio-slogan {
+  font-size: 14px;
+  font-style: italic;
+  color: var(--color-text-sub);
+  margin-top: 8px;
+  opacity: 0.8;
+}
+
+/* photo */
+.photo-frame {
+  background-color: #fff;
+  padding: 10px;
+  border-radius: 16px;
+  transform: rotate(3deg);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+  width: 220px;
+}
+
+.photo-frame img {
+  width: 100%;
+  height: 260px;
+  object-fit: cover;
+  border-radius: 10px;
+  display: block;
+}
+
+/* education */
+h2, h3 {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+
+.edu-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.edu-list li {
+  display: flex;
+  align-items: baseline;
+  font-size: 12px;
+  color: var(--color-text-sub);
+}
+
+.edu-years {
+  width: 80px;
+  font-weight: 600;
+  text-align: right;
+}
+
+.edu-dot {
+  width: 6px;
+  height: 6px;
+  background-color: #cbd5e1;
+  border-radius: 50%;
+  margin: 0 12px;
+  flex-shrink: 0;
+}
+
+.edu-list li.active {
+  color: var(--color-cocoa);
+  font-weight: 600;
+}
+
+.edu-list li.active .edu-dot {
+  background-color: var(--color-cocoa);
+}
+
+/* skills */
+.skills-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.skill {
+  background-color: var(--color-cocoa);
+  color: #fff;
+  padding: 8px 20px;
+  border-radius: 50px;
+  font-size: 13px;
+  font-weight: 600;
+  transition: transform 0.2s ease, background 0.3s ease;
+}
+
+.skill:hover {
+  background-color: var(--color-vanilla);
+  color: var(--color-cocoa);
+  transform: scale(1.05);
+}
+
+/* lower card */
+.footer-card {
+  display: flex;
+  justify-content: space-between;
+  gap: 30px;
+}
+
+.about-text {
+  flex: 2;
+  font-size: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* Contacts */
+.contact-block {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+
+.btn-contact {
+  background-color: var(--color-vanilla);
+  color: var(--color-cocoa);
+  padding: 10px 24px;
+  border-radius: 20px;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 0.5px;
+  transition: opacity 0.2s;
+}
+
+.btn-contact:hover {
+  opacity: 0.85;
+}
+
+.contact-details {
+  text-align: right;
+  font-size: 12px;
+}
+
+.contact-details a {
+  color: var(--color-accent-blue);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.contact-details a:hover {
+  color: var(--color-cocoa);
+  text-decoration: underline;
+}
+
+/* Footer*/
+.page-footer {
+  background-color: var(--color-card-bg);
+  color: var(--color-cocoa);
+  text-align: center;
+  padding: 15px 0;
+  border-radius: 16px;
+  margin-top: 20px;
+}
+
+.page-footer p {
+  font-size: 13px;
+  opacity: 0.8;
+}
+
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
