@@ -1,0 +1,294 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: #3ca081;
+  color: #f5ded3;
+  min-height: 100vh;
+  padding: 30px 15px;
+}
+
+/*Сетка приложения*/
+.app {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 20px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/*История игр*/
+.history-panel {
+  background: #2f7f68;
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+  height: fit-content;
+}
+
+.history-panel h2 {
+  font-size: 20px;
+  margin-bottom: 15px;
+  color: #f5ded3;
+  text-align: center;
+}
+
+.history-empty {
+  font-size: 14px;
+  color: #bfe6d9;
+  text-align: center;
+  padding: 10px 0;
+}
+
+.history-games {
+  list-style: none;
+  margin-bottom: 15px;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.history-games li {
+  background: #f5ded3;
+  color: #b1302b;
+  border-radius: 10px;
+  padding: 10px 12px;
+  margin-bottom: 8px;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.history-games li .num {
+  font-weight: bold;
+  font-size: 16px;
+  letter-spacing: 2px;
+}
+
+.history-games li .meta {
+  font-size: 12px;
+  color: #8e2420;
+  margin-top: 4px;
+}
+
+.clear-history {
+  width: 100%;
+  padding: 8px;
+  font-size: 13px;
+  background: transparent;
+  color: #f5ded3;
+  border: 1px solid #f5ded3;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.clear-history:hover {
+  background: #f5ded3;
+  color: #b1302b;
+}
+
+/*сама игра (панель игры)*/
+.game-panel {
+  background: #2f7f68;
+  border-radius: 16px;
+  padding: 25px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+}
+
+h1 {
+  text-align: center;
+  font-size: 26px;
+  margin-bottom: 15px;
+}
+
+/* переключение режима*/
+.mode-switch {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 15px;
+  background: #256b57;
+  padding: 5px;
+  border-radius: 10px;
+}
+
+.mode-btn {
+  flex: 1;
+  padding: 8px;
+  font-size: 14px;
+  font-weight: bold;
+  background: transparent;
+  color: #bfe6d9;
+  border: none;
+  border-radius: 7px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.mode-btn.active {
+  background: #f5ded3;
+  color: #b1302b;
+}
+
+/*правила игры*/
+.rules {
+  background: #f5ded3;
+  color: #b1302b;
+  border-radius: 10px;
+  padding: 12px 16px;
+  margin-bottom: 20px;
+  cursor: pointer;
+}
+
+.rules summary {
+  font-weight: bold;
+  font-size: 15px;
+}
+
+.rules p {
+  margin-top: 8px;
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+/*ввод чисел*/
+.input-row {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+input[type="text"] {
+  flex: 1;
+  padding: 12px;
+  font-size: 18px;
+  border: 2px solid #f5ded3;
+  border-radius: 8px;
+  background: #f5ded3;
+  color: #b1302b;
+  text-align: center;
+  letter-spacing: 4px;
+  outline: none;
+}
+
+input[type="text"]:disabled {
+  opacity: 0.6;
+}
+
+button {
+  padding: 12px 18px;
+  font-size: 15px;
+  font-weight: bold;
+  background: #b1302b;
+  color: #f5ded3;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+button:hover:not(:disabled) {
+  background: #8e2420;
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/*сообщения*/
+.error {
+  color: #ffd2cc;
+  font-size: 14px;
+  min-height: 20px;
+  margin-bottom: 8px;
+  text-align: center;
+}
+
+.attempts {
+  text-align: center;
+  font-size: 15px;
+  margin-bottom: 12px;
+}
+
+/*история попыток*/
+.history {
+  list-style: none;
+  margin-bottom: 20px;
+  max-height: 220px;
+  overflow-y: auto;
+}
+
+.history li {
+  background: #f5ded3;
+  color: #b1302b;
+  padding: 10px 14px;
+  border-radius: 8px;
+  margin-bottom: 8px;
+  font-size: 15px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.new-game {
+  width: 100%;
+  background: transparent;
+  color: #f5ded3;
+  border: 2px solid #f5ded3;
+}
+
+.new-game:hover {
+  background: #f5ded3;
+  color: #b1302b;
+}
+
+/*режим двух игроков*/
+.hidden {
+  display: none;
+}
+
+.duo-hint {
+  font-size: 14px;
+  color: #bfe6d9;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.duo-setup-block {
+  background: #256b57;
+  border-radius: 12px;
+  padding: 18px;
+  margin-bottom: 15px;
+}
+
+.duo-setup-block h3 {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.duo-turn {
+  text-align: center;
+  font-size: 17px;
+  font-weight: bold;
+  margin-bottom: 12px;
+}
+
+.duo-turn span {
+  color: #ffd2cc;
+}
+
+.duo-stats {
+  display: flex;
+  justify-content: space-around;
+  font-size: 14px;
+  margin-bottom: 12px;
+}
+
+/*адаптив*/
+@media (max-width: 700px) {
+  .app {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Быки и коровы</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="app">
+
+    <!-- История игр -->
+    <aside class="history-panel">
+        <h2>История игр</h2>
+        <p class="history-empty" id="historyEmpty">Пока нет завершённых игр</p>
+        <ul class="history-games" id="historyGames"></ul>
+        <button class="clear-history" id="clearHistoryBtn">Очистить историю</button>
+    </aside>
+
+    <!-- Панель игры -->
+    <main class="game-panel">
+
+        <h1>Быки и коровы</h1>
+
+        <!-- Переключатель режима -->
+        <div class="mode-switch">
+            <button class="mode-btn active" id="modeSolo">Один игрок</button>
+            <button class="mode-btn" id="modeDuo">Два игрока</button>
+        </div>
+
+        <!-- Блок правил -->
+        <details class="rules">
+            <summary>Как играть?</summary>
+            <p>Компьютер загадал 4-значное число с неповторяющимися цифрами.</p>
+            <p>Введи свою попытку — тоже 4 цифры, все разные.</p>
+            <p><b>Бык</b> — цифра угадана и стоит на своём месте.</p>
+            <p><b>Корова</b> — цифра есть в числе, но стоит не на своём месте.</p>
+        </details>
+
+        <!-- Режим: один игрок -->
+        <section class="mode" id="soloMode">
+            <div class="input-row">
+                <input type="text" id="guessInput" maxlength="4"
+                       placeholder="Введите 4 цифры" autocomplete="off">
+                <button id="checkBtn">Проверить</button>
+            </div>
+            <p id="errorMsg" class="error"></p>
+            <p class="attempts">Попыток: <span id="attemptsCount">0</span></p>
+            <ul id="historyList" class="history"></ul>
+            <button id="newGameBtn" class="new-game">Новая игра</button>
+        </section>
+
+        <!-- Режим: два игрока -->
+        <section class="mode hidden" id="duoMode">
+            <!-- Этап 1: загадывание чисел -->
+            <div id="duoSetup">
+                <p class="duo-hint">Каждый игрок загадывает число сопернику. Передавайте устройство по очереди.</p>
+
+                <div class="duo-setup-block" id="setupP1">
+                    <h3>Игрок 1, загадайте число</h3>
+                    <input type="text" id="p1Secret" maxlength="4" placeholder="4 цифры" autocomplete="off">
+                    <button id="p1SecretBtn">Загадать</button>
+                    <p class="error" id="p1Error"></p>
+                </div>
+
+                <div class="duo-setup-block hidden" id="setupP2">
+                    <h3>Игрок 2, загадайте число</h3>
+                    <input type="text" id="p2Secret" maxlength="4" placeholder="4 цифры" autocomplete="off">
+                    <button id="p2SecretBtn">Загадать</button>
+                    <p class="error" id="p2Error"></p>
+                </div>
+            </div>
+
+            <!-- сама игра -->
+            <div id="duoGame" class="hidden">
+                <p class="duo-turn">Ход: <span id="currentPlayer">Игрок 1</span></p>
+
+                <div class="input-row">
+                    <input type="text" id="duoGuessInput" maxlength="4"
+                           placeholder="Введите 4 цифры" autocomplete="off">
+                    <button id="duoCheckBtn">Проверить</button>
+                </div>
+                <p id="duoErrorMsg" class="error"></p>
+
+                <div class="duo-stats">
+                    <p>Попыток у Игрока 1: <span id="p1Attempts">0</span></p>
+                    <p>Попыток у Игрока 2: <span id="p2Attempts">0</span></p>
+                </div>
+
+                <ul id="duoHistoryList" class="history"></ul>
+                <button id="duoNewGameBtn" class="new-game">Новая игра</button>
+            </div>
+        </section>
+
+    </main>
+</div>
+
+<script src="script.js" defer></script>
+</body>
+</html>
