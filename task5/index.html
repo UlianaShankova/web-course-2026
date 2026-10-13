@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Simon Says</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="game-container">
+    <!-- Заголовок -->
+    <h1 class="game-title">SIMON SAYS</h1>
+
+    <!-- Информационная панель -->
+    <div class="info">
+        <div class="level-display">Уровень: <span id="round">0</span></div>
+        <div id="status" class="status-text">Нажмите «Старт»</div>
+    </div>
+
+    <!-- Игровое поле 2x2 -->
+    <div class="board" id="board">
+        <button class="sector green"  data-index="0"></button>
+        <button class="sector red"    data-index="1"></button>
+        <button class="sector blue"   data-index="2"></button>
+        <button class="sector yellow" data-index="3"></button>
+    </div>
+
+    <button id="startBtn" class="start-btn">Старт</button>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
