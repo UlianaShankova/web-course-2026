@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Лента постов — бесконечный скролл</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<header class="header">
+    <div class="header__inner">
+        <h1 class="header__title">Лента постов</h1>
+        <div class="search">
+            <input
+                    type="search"
+                    id="search-input"
+                    class="search-input"
+                    placeholder="Поиск по заголовку…"
+                    aria-label="Поиск по заголовку"
+                    autocomplete="off"
+            />
+            <span id="search-status" class="search-status" aria-live="polite"></span>
+        </div>
+    </div>
+</header>
+
+<main class="main">
+    <div id="posts-container" class="posts-container"></div>
+
+    <!-- Индикатор загрузки -->
+    <div id="loader" class="loader hidden" aria-live="polite">
+        <span class="spinner"></span>
+        <span>Загрузка…</span>
+    </div>
+
+    <!-- Сообщение об ошибке -->
+    <div id="error" class="error hidden" role="alert">
+        <span id="error-text"></span>
+        <button id="error-retry" class="btn btn--small" type="button">Повторить</button>
+    </div>
+
+    <!-- Сообщение «Больше постов нет» -->
+    <div id="end-message" class="end-message hidden">Больше постов нет</div>
+
+    <!-- Сентинел для IntersectionObserver -->
+    <div id="sentinel" class="sentinel"></div>
+</main>
+
+<!-- Окно поста: полный текст + комментарии -->
+<dialog id="post-dialog" class="dialog" aria-labelledby="dialog-title">
+    <div class="dialog__inner">
+        <button id="dialog-close" class="icon-btn" type="button" aria-label="Закрыть">&times;</button>
+
+        <article id="dialog-post" class="dialog__post"></article>
+
+        <section class="comments" aria-labelledby="comments-title">
+            <h3 id="comments-title" class="comments__title">Комментарии</h3>
+
+            <div id="comments-loader" class="loader hidden" aria-live="polite">
+                <span class="spinner"></span>
+                <span>Загружаем комментарии…</span>
+            </div>
+            <div id="comments-error" class="error hidden" role="alert">
+                <span id="comments-error-text"></span>
+                <button id="comments-retry" class="btn btn--small" type="button">Повторить</button>
+            </div>
+
+            <ul id="comments-list" class="comments__list"></ul>
+
+            <form id="comment-form" class="comment-form" autocomplete="off">
+                <input id="comment-name" class="field" type="text" maxlength="40" placeholder="Ваше имя (необязательно)" />
+                <textarea id="comment-text" class="field field--area" rows="3" required placeholder="Напишите ответ…"></textarea>
+                <div class="comment-form__row">
+                    <span id="comment-status" class="comment-form__status" aria-live="polite"></span>
+                    <button id="comment-submit" class="btn" type="submit">Ответить</button>
+                </div>
+            </form>
+        </section>
+    </div>
+</dialog>
+
+<script src="script.js"></script>
+</body>
+</html>
