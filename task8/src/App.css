@@ -1,0 +1,267 @@
+/* --- Базовые настройки и шрифт --- */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background: #f4f5fb; /* Светло-серый фон как на референсах */
+  color: #1a1a2e; /* Темно-синий текст вместо черного */
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding-top: 40px;
+}
+
+/* --- Главный контейнер --- */
+.app-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 0 16px;
+}
+
+.app-container {
+  width: 100%;
+  max-width: 500px; /* Карточка приложения */
+  background: #ffffff;
+  border-radius: 28px;
+  padding: 32px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05); /* Мягкая тень */
+}
+
+/* --- Шапка --- */
+.app-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 28px;
+}
+
+.header-date {
+  color: #8c8c9a;
+  font-size: 13px;
+  text-transform: capitalize;
+  margin-bottom: 4px;
+}
+
+.app-header h1 {
+  font-size: 28px;
+  font-weight: 700;
+}
+
+.header-icon {
+  width: 44px;
+  height: 44px;
+  background: #e8eaff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+}
+
+/* --- Форма добавления --- */
+.todo-form {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.todo-form input {
+  flex: 1;
+  padding: 16px 20px;
+  border: none;
+  background: #f4f5fb;
+  border-radius: 16px;
+  font-size: 15px;
+  font-family: inherit;
+  transition: all 0.2s;
+}
+
+.todo-form input:focus {
+  outline: none;
+  background: #fff;
+  box-shadow: 0 0 0 2px #5d5fef; /* Акцентная рамка при клике */
+}
+
+.todo-form button {
+  padding: 0 24px;
+  background: #5d5fef; /* Красивый фиолетово-синий */
+  color: white;
+  border: none;
+  border-radius: 16px;
+  font-weight: 600;
+  font-size: 15px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.todo-form button:hover {
+  background: #4a4cd4;
+}
+
+/* --- Панель управления (Фильтры и Сортировка) --- */
+.controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.filters {
+  display: flex;
+  background: #f4f5fb;
+  padding: 4px;
+  border-radius: 12px;
+}
+
+.filters button {
+  padding: 8px 16px;
+  border: none;
+  background: transparent;
+  color: #8c8c9a;
+  font-weight: 500;
+  font-size: 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.filters button.active {
+  background: #fff;
+  color: #1a1a2e;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.sort-select {
+  padding: 10px 16px;
+  border: none;
+  background: #f4f5fb;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #1a1a2e;
+  cursor: pointer;
+  outline: none;
+}
+
+/* --- Список задач --- */
+.todo-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.todo-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  background: #fff;
+  border: 1px solid #ececf3;
+  border-radius: 16px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.todo-item:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+}
+
+/* Кастомный чекбокс (как на макетах) */
+.todo-item label {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  cursor: pointer;
+  flex: 1;
+}
+
+.todo-item input[type="checkbox"] {
+  appearance: none; /* Убираем стандартный вид */
+  width: 24px;
+  height: 24px;
+  border: 2px solid #d1d1df;
+  border-radius: 8px;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.2s;
+}
+
+.todo-item input[type="checkbox"]:checked {
+  background: #5d5fef;
+  border-color: #5d5fef;
+}
+
+/* Рисуем галочку внутри кастомного чекбокса */
+.todo-item input[type="checkbox"]:checked::after {
+  content: "✓";
+  color: white;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.todo-item span {
+  font-size: 15px;
+  font-weight: 500;
+  color: #1a1a2e;
+  transition: color 0.2s;
+}
+
+/* Зачеркнутый текст для выполненных */
+.todo-item.done span {
+  text-decoration: line-through;
+  color: #a0a0b0;
+}
+
+/* Кнопка удаления */
+.delete-btn {
+  background: transparent;
+  border: none;
+  color: #d1d1df;
+  font-size: 20px;
+  cursor: pointer;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: all 0.2s;
+}
+
+.delete-btn:hover {
+  background: #ffebeb;
+  color: #ff4d4f;
+}
+
+/* --- Статистика внизу --- */
+.stats {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 28px;
+  padding-top: 20px;
+  border-top: 1px solid #ececf3;
+  font-size: 13px;
+  font-weight: 500;
+  color: #8c8c9a;
+}
+
+.empty {
+  text-align: center;
+  color: #8c8c9a;
+  padding: 40px 0;
+  font-size: 15px;
+}
