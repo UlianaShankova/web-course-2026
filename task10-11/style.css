@@ -1,0 +1,124 @@
+:root {
+    --bg-color: #1a1c1a; /* Темный фон */
+    --card-bg: #242624;
+    --text-main: #e0e0e0;
+    --text-muted: #888;
+    --accent-green: #7bc043; /* Яркий зеленый */
+    --accent-dark: #2e4a33;
+}
+
+/* Светлая тема */
+body.light-theme {
+    --bg-color: #f4f7f6;
+    --card-bg: #ffffff;
+    --text-main: #1a1c1a;
+    --text-muted: #666;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Manrope', sans-serif; }
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    transition: background 0.3s, color 0.3s;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 40px;
+    align-items: center;
+    background-color: var(--card-bg);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.logo { font-size: 24px; font-weight: 700; color: var(--accent-green); }
+
+.header-controls { display: flex; gap: 20px; align-items: center; }
+#theme-toggle { background: none; border: 1px solid var(--text-muted); color: var(--text-main); padding: 8px 15px; border-radius: 20px; cursor: pointer; }
+
+.profile { display: flex; align-items: center; gap: 10px; cursor: pointer; }
+.avatar { width: 40px; height: 40px; background: var(--accent-dark); color: white; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-weight: bold; }
+
+.dashboard {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 30px;
+    padding: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.balance-card {
+    background: linear-gradient(135deg, var(--accent-dark), #1e3022);
+    padding: 30px;
+    border-radius: 20px;
+    color: white;
+    margin-bottom: 30px;
+}
+
+.balance-card h1 { font-size: 48px; margin: 10px 0; }
+.currency-rates { display: flex; gap: 15px; font-size: 12px; opacity: 0.8; margin-top: 20px; }
+
+.chart-container {
+    background: var(--card-bg);
+    padding: 20px;
+    border-radius: 20px;
+}
+
+.right-panel { display: flex; flex-direction: column; gap: 30px; }
+
+.add-transaction, .history {
+    background: var(--card-bg);
+    padding: 25px;
+    border-radius: 20px;
+}
+
+form { display: flex; flex-direction: column; gap: 12px; }
+input, select { padding: 12px; border-radius: 10px; border: 1px solid var(--text-muted); background: transparent; color: var(--text-main); }
+button { padding: 12px; border-radius: 10px; border: none; background: var(--accent-green); color: #111; font-weight: bold; cursor: pointer; }
+button:hover { opacity: 0.9; }
+
+select, input { color: var(--text-main); background-color: var(--card-bg); }
+option { background-color: var(--card-bg); color: var(--text-main); }
+/* Отключаем стандартные стили темной темы браузера для списков, чтобы они не ломались */
+select:focus, select:active { outline: none; }
+
+.transactions-list { margin-top: 15px; display: flex; flex-direction: column; gap: 15px; }
+.tx-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 15px;
+    border-bottom: 1px solid rgba(136, 136, 136, 0.2);
+}
+.tx-info { display: flex; align-items: center; gap: 15px; }
+.tx-icon { font-size: 24px; background: var(--card-bg); padding: 10px; border-radius: 50%; }
+.tx-amount.income { color: var(--accent-green); font-weight: bold; }
+.tx-amount.expense { color: #ff6b6b; font-weight: bold; }
+
+/* Стили для модального окна */
+.modal-overlay {
+    display: none; /* Скрыто по умолчанию */
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.7); backdrop-filter: blur(4px);
+    justify-content: center; align-items: center; z-index: 1000;
+}
+.modal-content {
+    background: var(--card-bg); padding: 30px; border-radius: 20px;
+    width: 400px; position: relative; box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+.close-modal {
+    position: absolute; top: 15px; right: 15px;
+    background: none; border: none; color: var(--text-muted); font-size: 18px; cursor: pointer;
+}
+.profile-details p { margin-bottom: 10px; font-size: 16px; }
+
+/* Окошки для курсов валют */
+.currency-widgets { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 10px; }
+.currency-card {
+    background: var(--bg-color); padding: 15px; border-radius: 12px;
+    display: flex; flex-direction: column; gap: 5px;
+}
+.currency-card span:first-child { font-size: 12px; color: var(--text-muted); }
+.currency-card span:last-child { font-size: 18px; font-weight: bold; color: var(--accent-green); }

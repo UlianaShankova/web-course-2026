@@ -1,1 +1,82 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Zen-Money Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+<header>
+    <div class="logo">Zen-Money</div>
+    <div class="header-controls">
+        <button id="theme-toggle">Тема</button>
+        <div class="profile" id="open-profile-btn">
+            <div class="avatar">A</div>
+            <span>User Name</span>
+        </div>
+    </div>
+</header>
+
+<main class="dashboard">
+    <section class="left-panel">
+        <div class="balance-card">
+            <p>Общий баланс</p>
+            <h1 id="total-balance">0.00 Br</h1>
+            <div class="currency-rates">
+                <span>USD: 3.27 Br</span>
+                <span>EUR: 3.55 Br</span>
+                <span>RUB: 0.035 Br</span>
+            </div>
+        </div>
+
+        <div class="chart-container">
+            <h3>Расходы по категориям</h3>
+            <canvas id="expensesChart"></canvas>
+        </div>
+    </section>
+
+    <section class="right-panel">
+        <div class="add-transaction">
+            <h3>Добавить операцию</h3>
+            <form id="transaction-form">
+                <input type="number" id="amount" placeholder="Сумма" step="0.01" required>
+                <select id="currency">
+                    <option value="BYN">Br Белорусский рубль (BYN)</option>
+                    <option value="USD">$ Доллар (USD)</option>
+                    <option value="EUR">€ Евро (EUR)</option>
+                    <option value="RUB">₽ Рос. рубль (RUB)</option>
+                    <option value="CNY">¥ Юань (CNY)</option>
+                </select>
+                <select id="category" required>
+                    <option value="">Категория</option>
+                </select>
+                <input type="date" id="date" required>
+                <input type="text" id="comment" placeholder="Комментарий (необязательно)">
+                <button type="submit">Добавить</button>
+            </form>
+        </div>
+
+        <div class="history">
+            <h3>История операций</h3>
+            <div id="transactions-list" class="transactions-list"></div>
+        </div>
+    </section>
+</main>
+
+<div id="profile-modal" class="modal-overlay">
+    <div class="modal-content">
+        <button class="close-modal" id="close-modal-btn">✖</button>
+        <h2>Мой профиль</h2>
+        <div id="profile-info" class="profile-details"></div>
+        <h3 style="margin-top: 20px;">Курсы валют</h3>
+        <div class="currency-widgets" id="currency-widgets"></div>
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
+
 
