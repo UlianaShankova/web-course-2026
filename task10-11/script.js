@@ -1,4 +1,4 @@
-const API_URL = 'http://localhost:3000';
+const API_URL = 'https://task10-11-zen-money.onrender.com';
 let expensesChartInstance = null;
 
 const themeToggleBtn = document.getElementById('theme-toggle');
